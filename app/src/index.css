@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 33% 3%;
+    --foreground: 210 40% 96%;
+    --card: 240 25% 5%;
+    --card-foreground: 210 40% 96%;
+    --popover: 240 25% 5%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 234 89% 74%;
+    --primary-foreground: 240 33% 3%;
+    --secondary: 240 10% 12%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 240 10% 12%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 240 10% 12%;
+    --accent-foreground: 210 40% 96%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 96%;
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 234 89% 74%;
+    --radius: 0.75rem;
+    --sidebar-background: 240 25% 5%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 234 89% 74%;
+    --sidebar-primary-foreground: 240 33% 3%;
+    --sidebar-accent: 240 10% 12%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 240 10% 15%;
+    --sidebar-ring: 234 89% 74%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-void text-text-primary antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(129, 140, 248, 0.25);
+    color: #f1f5f9;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #818cf8 0%, #22d3ee 50%, #818cf8 100%);
+    background-size: 200% 200%;
+  }
+
+  .text-gradient-amber {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #fbbf24 0%, #fb7185 100%);
+  }
+
+  .glass {
+    background: rgba(12, 12, 18, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  .glass-strong {
+    background: rgba(12, 12, 18, 0.85);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+  }
+
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(129, 140, 248, 0.3), rgba(34, 211, 238, 0.15), transparent 60%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .glow-border:hover::before {
+    opacity: 1;
+  }
+}
